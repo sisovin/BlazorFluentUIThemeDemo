@@ -1,0 +1,41 @@
+﻿@rendermode InteractiveServer
+<FluentButton BackgroundColor="var(--neutral-layer-3)" Title="@DynamicTitle" OnClick="OnChangeTheme">
+    <FluentDesignTheme Mode="@Mode" OnLuminanceChanged="@OnLuminanceChanged" />
+     @if (Mode == DesignThemeModes.Light)
+     {
+        <FluentIcon Title="Light theme" Color="Color.FillInverse" Value="@(new Icons.Filled.Size20.CircleHalfFill())" />
+     }
+     else
+     {
+        <FluentIcon Title="Dark theme" Color="Color.FillInverse" Value="@(new Icons.Filled.Size20.DarkTheme())" />
+     }
+</FluentButton>
+
+@code{
+
+    public DesignThemeModes Mode { get; set; }
+
+    private string? GetMode()
+    {
+        return Mode switch
+        {
+            DesignThemeModes.Light => "Light",
+            DesignThemeModes.Dark => "Dark",
+            _ => null
+        };
+    }
+
+    void OnLuminanceChanged(LuminanceChangedEventArgs e)
+    {
+        DemoLogger.WriteLine($"{(e.Mode == DesignThemeModes.Dark ? "Dark" : "")} {(e.IsDark ? "Light" : "Dark")}");
+    }
+
+    private async Task OnChangeTheme()
+    {
+        Mode = Mode == DesignThemeModes.Light ? DesignThemeModes.Dark : DesignThemeModes.Light;
+        await Task.CompletedTask;
+    }
+
+    private string DynamicTitle => $"Switch to {(Mode == DesignThemeModes.Light ? "Dark" : "Light")} theme";
+}
+@* () => Mode = Mode == DesignThemeModes.Light ? DesignThemeModes.Dark : DesignThemeModes.Light; *@

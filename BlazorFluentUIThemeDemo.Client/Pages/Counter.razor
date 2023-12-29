@@ -1,0 +1,31 @@
+﻿@page "/counter"
+@rendermode InteractiveAuto
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: <FluentBadge Appearance="Appearance.Neutral">@currentCount</FluentBadge></p>
+
+<FluentButton Appearance="Appearance.Accent" OnClick="()=>IncrementCount()">Click me</FluentButton>
+
+    @code {
+    private int currentCount = 0;
+
+    private async Task IncrementCount()
+    {
+        
+        var dialog = await DialogService.ShowConfirmationAsync("Are you sure want to click for numeric increment?","Yes","No","Confirmation Dialog");
+        var result = dialog.Result;
+
+        if (!result.IsCanceled)
+        {
+            currentCount = currentCount + 1;
+            ToastService.ShowInfo($"Current count: {currentCount}");
+            DemoLogger.WriteLine($"Current count: {currentCount}{Environment.NewLine}");
+        }
+
+        // currentCount = currentCount + 1;
+       // ToastService.ShowInfo($"Current count: {currentCount}");
+    }
+}

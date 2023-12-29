@@ -1,0 +1,42 @@
+﻿@page "/"
+
+<PageTitle>Fluent UI Blazor components Theme Demo</PageTitle>
+
+<h1>Blazor FluentUI Theme Design</h1>
+
+<h4>Design Theme Default</h4>
+<FluentDivider></FluentDivider>
+<DesignThemeDefault />
+<br />
+<h4>DesignTokenEmbeddedDefault</h4>
+<FluentDivider></FluentDivider>
+<DesignTokenEmbeddedDefault />
+<br />
+<h4>Console Log</h4>
+<FluentDivider></FluentDivider>
+<ConsoleLog />
+<br />
+<h4>Table of Contents</h4>
+<FluentDivider></FluentDivider>
+<TableOfContents @ref=_toc />
+<br />
+<h4>Setting Panel</h4>
+<FluentDivider></FluentDivider>
+<SiteSettingsPanel />
+<br />
+<h4>Notification Center</h4>
+<FluentDivider></FluentDivider>
+<NotificationCenter />
+<NotificationCenterPanel />
+
+
+
+@code {
+
+    private TableOfContents? _toc;
+
+    private void OnRefreshTableOfContents()
+    {
+        _toc?.Refresh();
+    }
+}

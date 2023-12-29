@@ -1,0 +1,14 @@
+﻿
+
+<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }">
+    <Found Context="routeData">
+        <FluentDesignTheme StorageName="theme" @rendermode="@InteractiveServer" />
+        <FluentToastProvider @rendermode="@InteractiveServer" />
+        <FluentDialogProvider @rendermode="@InteractiveServer" />
+        <FluentTooltipProvider @rendermode="@InteractiveServer" />
+        <FluentMessageBarProvider @rendermode="@InteractiveServer" />
+
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+</Router>

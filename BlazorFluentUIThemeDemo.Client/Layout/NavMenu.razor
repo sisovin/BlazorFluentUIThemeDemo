@@ -1,0 +1,19 @@
+﻿@* To get access to all Fluent UI System icons, install the Microsoft.FluentUI.AspNetCore.Compoents.Icon package *@
+@* See all the diffeent ways on how to use icons at https://www.fluentui-blazor.net/Icon *@
+@rendermode InteractiveAuto
+
+<div class="navmenu">
+    <input type="checkbox" id="navmenu-toggle" class="navmenu-icon" />
+    <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click()">
+        <FluentNavMenu Class="sitenav" Id="main-menu" Title="Main menu" Width="250">
+            <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Href="/" Match="NavLinkMatch.All">
+                <h3>Home</h3>
+            </FluentNavLink>
+            <FluentNavLink Href="counter" Icon="@Icon.FromImageUrl("/images/counter.svg")" IconColor="Color.Neutral">Counter</FluentNavLink>
+            <FluentNavLink Href="weather" Icon="@Icon.FromImageUrl("/images/weather.svg")" IconColor="Color.Neutral">Weather</FluentNavLink>
+        </FluentNavMenu>
+    </nav>
+
+</div>
+
+
